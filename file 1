@@ -1,0 +1,71 @@
+hello = "hello world but im too lazy to make an exclamation mark"
+print(hello)
+
+# No apostrophes because python hates poor grammar
+# Backslash tells python to ignore the next character 
+
+whole = 10
+decimal = 10.10
+
+print(whole + decimal)
+
+# lst = []
+
+colors = ["green","blue","red","seafoam green","buff yellow"]
+ages = [15,14,14,15,15]
+
+# dct = {} with keys
+
+ages = {"Fin": 15, "Elias": 14, "James": 14, "Trevor": 1, "Mason": 15}
+
+dct = {1:"eric","key":["list"]}
+
+# Booleans
+
+x = True
+y = False
+z = None
+
+print(0 == z)
+
+# Unit 1.2 Math and Logic
+
+#Math
+
+print(1 + 1 - 1 * 1 / 1)
+
+print(22 % 7)
+
+# Powers and roots
+
+print(2 ** 2)
+
+Elias = "Inferno minions don't have good droprates! "
+Elias = Elias * 2
+print(Elias)
+
+Lisp = [0,1,2,3,4,5]
+Lisp = Lisp * 10
+Lisp.sort()
+print(Lisp)
+
+# Pemdas
+
+# Logic
+
+r = 1
+
+r = r + 1
+# is the same as
+r += 1
+
+print(r == 1 and r != 0)
+# true because both conditions are satisfied
+print(r == 1 or r == 0)
+# True because 1 condition is satisfied
+
+
+
+
+
+
