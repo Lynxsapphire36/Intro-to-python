@@ -1,0 +1,25 @@
+def calculator():
+    equation = str(input("Enter your equation with spaces: "))
+    equation = equation.split()
+    list(equation)
+
+    first_number = equation[0]
+    operator = equation[1]
+    second_number = equation[2]
+
+    first_number = float(first_number)
+    second_number = float(second_number)
+
+    if operator == "+":
+        print(first_number + second_number)
+    elif operator == "-":
+        print(first_number - second_number)
+    elif operator == "*":
+        print(first_number * second_number)
+    elif operator == "/":
+        print(first_number / second_number)
+    elif operator == "**":
+        print(first_number ** second_number)
+
+
+calculator()
