@@ -22,4 +22,5 @@ def calculator():
         print(first_number ** second_number)
 
 
-calculator()
+if __name__ == "__main__": 
+    calculator()
