@@ -21,5 +21,4 @@ def calculator():
     elif operator == "**":
         print(first_number ** second_number)
 
-
 calculator()
