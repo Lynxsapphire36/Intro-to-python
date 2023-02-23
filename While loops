@@ -10,12 +10,15 @@ while boolean == True:
         break
 
 
-Guess = int(input("Guess a number between 1 and 10: "))
-number = 5
+Guess = int(input("Guess a number between 1 and 100: "))
+number = random.choice(range(1,101))
 while number >= 1:
     if number == Guess:
         print("You did it!")
         break
-    else:
-        print("Try again!")
+    elif number < Guess:
+        print("Lower")
+        Guess = int(input("Guess a number between 1 and 10: "))
+    elif number > Guess:
+        print("Higher")
         Guess = int(input("Guess a number between 1 and 10: "))

@@ -1,0 +1,50 @@
+'''
+To make a ham sandwhich, you first open a drawer and take out a cutting board. Then close the drawer. 
+Place the cutting board on the counter. Open a drawer and remove a knife. Set the knife down next to the cutting board. 
+Walk to the pantry and open the door. Take a loaf of bread out and close the door. 
+Take 2 slices of bread and lay them onto the cutting board.
+Open the pantry door. Replace the bread in the pantry and close the door. Walk to the fridge and open it. 
+Take out the package of ham and set it down next to the cutting board. 
+Take 2-3 slices of ham out of the package and place them on one of the slices of bread.
+Place the ham back into the fridge and close the door. Place the other slice of bread on top of the first one.
+Cut the sandwhich in half with the knife, and put the knife back into the drawer before closing it. 
+Take a plate out of the cupboard and then close the cupboard. Place the plate on the counter. Pick up the sandwhich and place it on the plate
+Replace the cutting board back into the drawer and close the drawer. Complete.
+'''
+
+def two_evens(a,b):
+    if a % 2 == 0 and b % 2 == 0:
+        if a < b:
+            return a
+        else:
+            return b
+    else:
+        return False
+    
+number = two_evens(int(input("First number: ")), int(input("Second number: ")))
+print(number)
+
+def animal_crackers(a):
+    a = a.split()
+    word_1 = a[0]
+    word_2 = a[1]
+    if word_1[0] == word_2[0]:
+        return True
+    else:
+        return False
+    
+animals = animal_crackers(input("Enter two words here: "))
+print(animals)
+
+def twenty(a,b):
+    a = int(a)
+    b = int(b)
+    if a or b == 20:
+        return True
+    elif a + b == 20:
+        return True
+    else:
+        return False
+
+twentys = twenty(input("Enter your first number here: "), input("Enter your second number here: "))
+print(twentys)
