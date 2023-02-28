@@ -1,0 +1,58 @@
+name_length = input("Insert your name here: ")
+# This is the variable which the name will be stored in
+if name_length.__len__() <=4:
+# The .__len__ variable method gets the length of a string. I am using this to check the length of a name
+    print("You have a short name!")
+# If the name is shorter or equal to 4 letters, it will print that your name is short
+elif name_length.__len__ == 5 or 6 or 7:
+    print("You have a normal length name!")
+#If the name is between 4 and 7 letters, it will print that your name is normal
+elif name_length.__len__ > 7:
+    print("You have a long name!")
+#If the name is longer than 7 letters, it will print that your name is long
+else:
+    print("Something about the name you entered is incorrect")
+
+for i in range(1,10):
+# This  is the for loop that runs until i reaches 10. I increases by 1 every time
+    if i % 2 != 0:
+# This checks if i is even or not, and prints Hi if it is not
+        print("Hi")
+    else:
+        pass
+# The pass statement is used here to just continue
+
+Math_equation = input("What does 5 + 6 equal?: ")
+# This takes the users input
+while 1 == 1:
+# This while loop is always true
+    Math_equation = int(Math_equation)
+# This takes the input of the user and turns it into a number form
+    if Math_equation == 11:
+        print("You did it!")
+        break
+# If you got the answer correct, this ends the loop
+    else:
+        print("Wrong, try again")
+        Math_equation = input("What does 5 + 6 equal?: ")
+# If you got the answer incorrect, this lets you try again
+
+def your_name():
+# Declaring the function
+    Name = input("Enter your name here: ")
+    while 1 == 1:
+# Making an always true for loop
+        for i in Name:
+# Making a for loop to go through every character in the name
+            if i.isnumeric() == False:
+# Making an if statment that checks if the character is a number
+                pass
+            else:
+# Giving an oppurtunity to try again
+                print("Try again, your name cannot contain numbers")
+                Name = input("Enter your name here: ")
+# Printing the name
+        print(f"Your name is {Name}")
+        break
+# Using the function
+your_name()
