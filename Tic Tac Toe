@@ -1,53 +1,76 @@
 global game_running
 game_running = True
+# The variable to control when the game is running or not
 global turn
 turn = "X"
+# The variable to control which player's turn it is
+global spots
 spots = { 1:"-", 2:"-", 3:"-", 4:"-", 5:"-", 6:"-", 7:"-", 8:"-", 9:"-"}
-# Making the nescessary variables to run the game
+# The variable to control what the 9 spaces on the board are
 def board():
     print(f"  {spots[1]}  ||  {spots[2]}  ||  {spots[3]}  ")
     print(f"===================")
     print(f"  {spots[4]}  ||  {spots[5]}  ||  {spots[6]}  ")
     print(f"===================")
     print(f"  {spots[7]}  ||  {spots[8]}  ||  {spots[9]}  ")
-# drawing the board
+# This function draws the board
 def haswon():
     wincombos = ["123", "456", "789", "159", "357", "147", "258", "369"]
+    # A variable that lists all of the spaces that are winning combinations
     for combo in wincombos:
         if (spots[int(combo[0])] + spots[int(combo[1])] + spots[int(combo[2])]) == (turn * 3):
             return True
-# This checks if someone has won
+# This function checks if someone has won
 def choice():
     fillervar = 1
     square_chosen = input(f"It is player {turn}'s turn. Please enter a square from 1 - 9: ")
+    # This variable is to allow the player to input which space they want to choose for their turn
     square_chosen = int(square_chosen)
+    # This makes sure the square chosen is an integer
     while fillervar == 1:
-        if square_chosen>0 and square_chosen<10:
+        if (square_chosen>0 and square_chosen<10) and spots[square_chosen] == "-":
             spots[square_chosen] = turn
             fillervar = 2
         else:
-            pass
-# This allows the player to make a choice
+            square_chosen = input(f"It is player {turn}'s turn. Please enter a square from 1 - 9: ")
+            square_chosen = int(square_chosen)
+# This function allows the player to make a choice
 def main():
     global turn
     global game_running
+    global spots
+    # You need to redeclare global variables
     while game_running == True:
         board()
         choice()
         haswon()
+        # Running all of the earlier functions inside of a loop
         if haswon() == True:
             print(f"Player {turn} has won!!!")
             board()
-            game_running = False
+            continued = input("Do you want to continue? Y or N: ")
+            if continued == "Y":
+                spots = { 1:"-", 2:"-", 3:"-", 4:"-", 5:"-", 6:"-", 7:"-", 8:"-", 9:"-"}
+            else:
+                game_running = False
+                print("Game over")
+        # Checking if someone has won and giving the option to restart
         elif all(value != "-" for value in spots.values()):
             print("Draw")
             board()
-            game_running = False
+            continued = input("Do you want to continue? Y or N: ")
+            if continued == "Y":
+                spots = { 1:"-", 2:"-", 3:"-", 4:"-", 5:"-", 6:"-", 7:"-", 8:"-", 9:"-"}
+            else:
+                game_running = False
+                print("Game over")
+        # Checking if there is a draw and giving the option to restart
         else:
             pass
         if turn == "X":
             turn = "O"
         elif turn == "O":
             turn = "X"
-# Running the actual game
+# The function that runs the actual game
 main()
+# Calling the tic tac toe function
