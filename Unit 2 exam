@@ -41,7 +41,7 @@ def your_name():
 # Declaring the function
     Name = input("Enter your name here: ")
     while 1 == 1:
-# Making an always true for loop
+# Making an always true while loop
         for i in Name:
 # Making a for loop to go through every character in the name
             if i.isnumeric() == False:

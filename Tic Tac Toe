@@ -35,6 +35,8 @@ def choice():
             square_chosen = input(f"It is player {turn}'s turn. Please enter a square from 1 - 9: ")
             square_chosen = int(square_chosen)
 # This function allows the player to make a choice
+def countwins():
+    global turn
 def main():
     global turn
     global game_running
