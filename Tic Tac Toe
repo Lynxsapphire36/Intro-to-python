@@ -25,15 +25,13 @@ def choice():
     fillervar = 1
     square_chosen = input(f"It is player {turn}'s turn. Please enter a square from 1 - 9: ")
     # This variable is to allow the player to input which space they want to choose for their turn
-    square_chosen = int(square_chosen)
-    # This makes sure the square chosen is an integer
     while fillervar == 1:
-        if (square_chosen>0 and square_chosen<10) and spots[square_chosen] == "-":
+        try:
+            square_chosen = int(square_chosen)
             spots[square_chosen] = turn
             fillervar = 2
-        else:
+        except:
             square_chosen = input(f"It is player {turn}'s turn. Please enter a square from 1 - 9: ")
-            square_chosen = int(square_chosen)
 # This function allows the player to make a choice
 def countwins():
     global turn
