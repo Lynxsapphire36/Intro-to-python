@@ -16,7 +16,7 @@ class circle:
         self.area = radius**2*pi
     def setRadius(self,new_radius):
         self.radius = new_radius
-        Self.area = new_radius**2*pi
+        self.area = new_radius**2*pi
 
 c = circle
 

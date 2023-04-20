@@ -1,0 +1,127 @@
+import random
+
+# Make the deck
+suits = ["Hearts", "Diamonds", "Spades", "Clubs"]
+ranks = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]
+deck = []
+global money, bet, game_running, value
+money = 100.0
+bet = 0.0
+value = 0
+game_running = True
+for suit in suits:
+    for rank in ranks:
+        deck.append(rank + " of " + suit)
+
+# Define the hand
+def hand_value(hand):
+    global value
+    num_aces = 0
+    for card in hand:
+        rank = card.split()[0]
+        if rank == "Ace":
+            num_aces += 1
+            value += 11
+        elif rank in ["Jack", "Queen", "King"]:
+            value += 10
+        else:
+            value += int(rank)
+    while value > 21 and num_aces > 0:
+        value -= 10
+        num_aces -= 1
+    return value
+
+# Let the player take their turn
+def player_turn():
+    global money, bet, game_running
+    while game_running == True:
+        while bet == 0.0:
+            bet = input(f"How much do you want to bet? You have {money} cp remaining:")
+            try:
+                bet = float(bet)
+                money = money - bet
+            except:
+                bet = input(f"How much do you want to bet? You have {money} cp remaining:")
+        if bet > 0.0:
+            # Print the initial hands
+            print("Your hand:", player_hand)
+            print("Dealer's hand:", [dealer_hand[0], "???"])
+            choice = input("Do you want to hit, stand, double down, split, or surrender? (Write in lowercase): ")
+            if choice.lower() == "surrender":
+                money = money + (bet/2)
+                game_running = False
+            elif choice.lower() == "hit":
+                player_hand.append(deck.pop())
+                print("Your new hand:", player_hand)
+                if hand_value(player_hand) > 21:
+                    print("You bust! Dealer wins.")
+                    break
+            elif choice.lower() == "double down" and (hand_value(player_hand) == (9 or (10 or 11))):
+                money = money - bet
+                bet = bet * 2
+                choice = input("Do you want to hit or stand? (Write in lowercase): ")
+                if choice.lower() == "hit":
+                    player_hand.append(deck.pop())
+                    print("Your new hand:", player_hand)
+                    if hand_value(player_hand) > 21:
+                        print("You bust! Dealer wins.")
+                        break
+                    elif choice.lower() == "stand":
+                        break
+            elif choice.lower() == "split" and (hand_value(player_hand) % 2 == type(int)):
+                split_hand = player_hand.pop()
+                choice = input("Do you want to hit or stand? (Write in lowercase): ")
+                if choice.lower() == "hit":
+                    player_hand.append(deck.pop())
+                    print("Your new hand:", player_hand)
+                    if hand_value(player_hand) > 21:
+                        print("You bust! Dealer wins.")
+                        break
+                elif choice.lower() == "stand":
+                    break
+            elif choice.lower() == "stand":
+                break
+
+# Define the main game loop
+while True:
+    print("Welcome to blackjack!")
+
+    # Shuffle the deck and deal two cards to the player and dealer
+    random.shuffle(deck)
+    player_hand = [deck.pop(), deck.pop()]
+    dealer_hand = [deck.pop(), deck.pop()]
+    split_hand = []
+    player_turn()
+    if money <= 0:
+        print("Game Over. You are flat broke.")
+        break
+
+    
+    if (player_hand[0] == (rank == "Ace") and player_hand[1] == (value == "10")) or (player_hand[1] == (rank == "Ace") and player_hand[0] == (value == "10")):
+        print("Natural, you win!")
+        money += (bet*2.5)
+        break
+    # Let the dealer take their turn
+    if hand_value(player_hand) <= 21:
+        print("Dealer's hand:", dealer_hand)
+        while hand_value(dealer_hand) < 17:
+            dealer_hand.append(deck.pop())
+            print("Dealer's new hand:", dealer_hand)
+        if hand_value(dealer_hand) > 21:
+            print("Dealer busts! You win.")
+            money += (bet*2)
+        elif hand_value(dealer_hand) >= hand_value(player_hand):
+            print("Dealer wins.")
+        elif hand_value(dealer_hand) == hand_value(player_hand):
+            print("Its a Push")
+            money += bet
+        else:
+            print("You win!")
+            money += (bet*2)
+
+    # Ask the player if they want to play again
+    choice = input("Do you want to play again? y or n: ")
+    if choice.lower() != "y":
+        print("Have a nice day")
+        break
+    bet = 0.0
